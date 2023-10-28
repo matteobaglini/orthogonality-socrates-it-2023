@@ -5,6 +5,12 @@ object Checks {
   type ErrorMsg = String
   type Check = Password => Validated[List[ErrorMsg], Password]
 
+  val strongPassword = List(
+    checkLength,
+    checkUpperCase,
+    checkNumber
+  )
+
   def checkLength: Check = {
     password =>
       Validated.fromEither(
