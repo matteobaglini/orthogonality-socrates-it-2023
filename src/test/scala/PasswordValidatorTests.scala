@@ -3,7 +3,7 @@ class PasswordValidatorTests extends munit.FunSuite {
 
   test("password with more than 8 chars") {
     val result = PasswordValidator()
-      .validate("asdasdasD")
+      .validate("1asdasdasD")
     assert(result)
   }
 
@@ -15,7 +15,7 @@ class PasswordValidatorTests extends munit.FunSuite {
 
   test("password with upper case letter") {
     val result = PasswordValidator()
-      .validate("asdaSdasd")
+      .validate("asd7aSdasd")
     assert(result)
   }
 
