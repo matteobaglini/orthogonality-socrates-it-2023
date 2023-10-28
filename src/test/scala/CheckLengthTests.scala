@@ -4,11 +4,13 @@ class CheckLengthTests extends munit.FunSuite {
 
   test("password with more than 8 chars") {
     val result = checkLength("asdasdasd")
-    assert(result)
+    val expected = Right("asdasdasd")
+    assertEquals(result, expected)
   }
 
   test("password with less than 9 chars") {
     val result = checkLength("asdasd")
-    assert(!result)
+    val expected = Left("requires more than 8 chars")
+    assertEquals(result, expected)
   }
 }
