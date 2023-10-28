@@ -1,6 +1,6 @@
 case class PasswordValidator() {
   def validate(password: String): Boolean = {
-    checkLength(password) && checkUpperCase(password) && password.matches("^.*[0-9].*$")
+    checkLength(password) && checkUpperCase(password) && checkNumber(password)
   }
 
   private def checkLength(password: String) = {
@@ -9,5 +9,9 @@ case class PasswordValidator() {
 
   private def checkUpperCase(password: String) = {
     password.matches("^.*[A-Z].*$")
+  }
+
+  private def checkNumber(password: String) = {
+    password.matches("^.*[0-9].*$")
   }
 }
