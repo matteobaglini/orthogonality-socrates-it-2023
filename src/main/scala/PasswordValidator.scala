@@ -1,9 +1,11 @@
 import Checks._
+import cats.data.Validated
+import cats.implicits._
 
 case class PasswordValidator(checks: List[Check]) {
-  def validate(password: String): Either[ErrorMsg, Password] = {
+  def validate(password: String): Validated[List[ErrorMsg], Password] = {
     checks
-      .map(check => check(password))
-      .reduce((acc, cur) => acc.flatMap(_ => cur))
+      .traverse(check => check(password))
+      .map(_ => password)
   }
 }
