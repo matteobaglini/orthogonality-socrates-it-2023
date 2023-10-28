@@ -1,6 +1,10 @@
 case class PasswordValidator() {
   def validate(password: String): Boolean = {
-    checkLength(password) && checkUpperCase(password) && checkNumber(password)
+    val check1: String => Boolean = checkLength
+    val check2: String => Boolean = checkUpperCase
+    val check3: String => Boolean = checkNumber
+    
+    check1(password) && check2(password) && check3(password)
   }
 
   private def checkLength(password: String) = {
