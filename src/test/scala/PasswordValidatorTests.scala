@@ -24,4 +24,10 @@ class PasswordValidatorTests extends munit.FunSuite {
       .validate("asdasdasd")
     assert(!result)
   }
+
+  test("password with a number") {
+    val result = PasswordValidator()
+      .validate("asdaSdasd9")
+    assert(result)
+  }
 }
