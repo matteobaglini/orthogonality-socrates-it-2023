@@ -17,7 +17,10 @@ object Checks {
                   "requires at least one upper case letter")
   }
 
-  def checkNumber: Check = {
-    password => password.matches("^.*[0-9].*$")
+  def checkNumber: CheckE = {
+    password =>
+      Either.cond(password.matches("^.*[0-9].*$"),
+        password,
+        "requires at least one number")
   }
 }
