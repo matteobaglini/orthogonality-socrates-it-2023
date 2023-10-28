@@ -1,7 +1,9 @@
 object Checks {
   private type Password = String
-  
+  private type ErrorMsg = String
+
   type Check = Password => Boolean
+  type CheckE = Password => Either[ErrorMsg, Password]
 
   def checkLength: Check = {
     password => password.length > 8
