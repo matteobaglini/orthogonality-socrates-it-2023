@@ -2,7 +2,7 @@ import Checks.Check
 
 case class PasswordValidator() {
   def validate(password: String): Boolean = {
-    val checks = List[Check](
+    val checks = List(
       checkLength,
       checkUpperCase,
       checkNumber)
@@ -12,15 +12,15 @@ case class PasswordValidator() {
       .reduce((acc, cur) => acc && cur)
   }
 
-  private def checkLength(password: String) = {
-    password.length > 8
+  private def checkLength: Check = {
+    password => password.length > 8
   }
 
-  private def checkUpperCase(password: String) = {
-    password.matches("^.*[A-Z].*$")
+  private def checkUpperCase: Check = {
+    password => password.matches("^.*[A-Z].*$")
   }
 
-  private def checkNumber(password: String) = {
-    password.matches("^.*[0-9].*$")
+  private def checkNumber: Check = {
+    password => password.matches("^.*[0-9].*$")
   }
 }
