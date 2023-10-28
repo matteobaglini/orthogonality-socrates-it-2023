@@ -1,6 +1,6 @@
 import Checks._
 
-case class PasswordValidator(checks: List[CheckE]) {
+case class PasswordValidator(checks: List[Check]) {
   def validate(password: String): Either[ErrorMsg, Password] = {
     checks
       .map(check => check(password))

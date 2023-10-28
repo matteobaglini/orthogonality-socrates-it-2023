@@ -2,8 +2,8 @@ import Checks._
 
 class PasswordValidatorTests extends munit.FunSuite {
 
-  def validCheck: CheckE = password => Right(password)
-  def invalidCheck: CheckE = _ => Left("invalid")
+  def validCheck: Check = password => Right(password)
+  def invalidCheck: Check = _ => Left("invalid")
 
   test("all checks are valid") {
     val result = PasswordValidator(List(validCheck, validCheck, validCheck))
