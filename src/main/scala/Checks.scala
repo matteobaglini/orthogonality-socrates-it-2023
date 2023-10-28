@@ -6,11 +6,15 @@ object Checks {
   type CheckE = Password => Either[ErrorMsg, Password]
 
   def checkLength: CheckE = {
-    password => Either.cond(password.length > 8, password, "requires more than 8 chars")
+    password => Either.cond(password.length > 8,
+                  password,
+                  "requires more than 8 chars")
   }
 
-  def checkUpperCase: Check = {
-    password => password.matches("^.*[A-Z].*$")
+  def checkUpperCase: CheckE = {
+    password => Either.cond(password.matches("^.*[A-Z].*$"),
+                  password,
+                  "requires at least one upper case letter")
   }
 
   def checkNumber: Check = {
