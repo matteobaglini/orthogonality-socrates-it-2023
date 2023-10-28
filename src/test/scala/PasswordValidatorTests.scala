@@ -1,7 +1,9 @@
 
 class PasswordValidatorTests extends munit.FunSuite {
 
-  test("test runner check") {
-    assert(true)
+  test("password with more than 8 chars") {
+    val result = PasswordValidator()
+      .validate("asdasdads")
+    assert(result)
   }
 }
