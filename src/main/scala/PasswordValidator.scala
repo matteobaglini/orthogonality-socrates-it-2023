@@ -3,8 +3,12 @@ case class PasswordValidator() {
     val check1: String => Boolean = checkLength
     val check2: String => Boolean = checkUpperCase
     val check3: String => Boolean = checkNumber
+
+    val checks = List(check1, check2, check3)
     
-    check1(password) && check2(password) && check3(password)
+    checks
+      .map(check => check(password))
+      .reduce((acc, cur) => acc && cur)
   }
 
   private def checkLength(password: String) = {
