@@ -1,7 +1,13 @@
+import Checks._
 
 class PasswordValidatorTests extends munit.FunSuite {
 
-  val passwordValidator = PasswordValidator()
+  val checks = List(
+    checkLength,
+    checkUpperCase,
+    checkNumber)
+
+  val passwordValidator = PasswordValidator(checks)
 
   test("password with more than 8 chars") {
     val result = passwordValidator
