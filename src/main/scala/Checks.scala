@@ -1,5 +1,7 @@
 object Checks {
-  type Check = String => Boolean
+  private type Password = String
+  
+  type Check = Password => Boolean
 
   def checkLength: Check = {
     password => password.length > 8
