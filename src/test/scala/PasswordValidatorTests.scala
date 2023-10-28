@@ -12,4 +12,10 @@ class PasswordValidatorTests extends munit.FunSuite {
       .validate("asdasd")
     assert(!result)
   }
+
+  test("password with upper case letter") {
+    val result = PasswordValidator()
+      .validate("asdaSdasd")
+    assert(result)
+  }
 }
